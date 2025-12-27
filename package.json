@@ -1,0 +1,78 @@
+{
+  "name": "v-sharp",
+  "displayName": "V#",
+  "description": "Support for the V# programming language.",
+  "version": "0.0.1",
+  "publisher": "v-sharp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/v-sharp-language/v-sharp-vscode"
+  },
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters",
+    "Snippets"
+  ],
+  "icon": "images/icon.png",
+  "contributes": {
+    "languages": [
+      {
+        "id": "v-sharp",
+        "aliases": [
+          "V#",
+          "v-sharp"
+        ],
+        "extensions": [
+          ".vs"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/v-sharp-logo.png",
+          "dark": "./images/v-sharp-logo.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "v-sharp",
+        "scopeName": "source.vs",
+        "path": "./syntaxes/v-sharp.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "v-sharp",
+        "path": "./snippets/v-sharp.snippets"
+      }
+    ],
+    "configuration": {
+      "title": "V$# Configuration",
+      "properties": {
+        "v-sharp.path": {
+          "type": "string",
+          "default": null,
+          "description": "A path to the V# executable. the extension looks for V# in the PATH, but if set, will use the path specified instead.",
+          "scope": "machine"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "webpack --mode production",
+    "compile": "webpack --mode development",
+    "compile-watch": "webpack --mode development --watch",
+    "test-compile": "tsc -p ./",
+    "vscode:package": "vsce package"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "vscode": "^1.1.34",
+    "vscode-languageclient": "^9.0.1",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
+  }
+}

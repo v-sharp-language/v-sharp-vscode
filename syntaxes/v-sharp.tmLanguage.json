@@ -1,0 +1,38 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "V#",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.v-sharp",
+				"match": "\\b(public|private|virtual|override|static|const|var|if|else|match|for|return|structure|enumeration|define|typedef|class)\\b"
+			}]
+		},
+		"primitives": {
+			"patterns": [{
+				"name": "constant.language.v-sharp",
+				"match": "\\b(int8|int16|int32|int64|uint8|uint16|uint32|uint64|float32|float64|boolean|string|byte|void)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.v-sharp",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.v-sharp",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.vs"
+}
