@@ -1,10 +1,11 @@
+// webpack.config.js
 'use strict';
 
 const path = require('path');
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
-    mode: 'production',
+    mode: 'none',
     target: 'node',
     entry: './src/extension.ts',
     output: {
@@ -15,9 +16,6 @@ module.exports = {
     externals: {
         vscode: 'commonjs vscode',
         'vscode-languageclient': 'commonjs vscode-languageclient',
-        'vscode-languageserver-protocol': 'commonjs vscode-languageserver-protocol',
-        'vscode-languageserver-types': 'commonjs vscode-languageserver-types',
-        'vscode-jsonrpc': 'commonjs vscode-jsonrpc',
     },
     resolve: {
         extensions: ['.ts', '.js'],
