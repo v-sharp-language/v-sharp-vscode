@@ -14,9 +14,9 @@ export async function activate(context: vscode.ExtensionContext) {
     const vSharpPath = await getVSharpCommandPath();
     if (!vSharpPath) {
         vscode.window.showErrorMessage(
-            `Could not resolve v# executable.
+            `Could not resolve vsharp executable.
 
-Please ensure it is available on the PATH used by VS Code, or set an explicit "v-sharp.path" setting to a valid v# executable.`
+Please ensure it is available on the PATH used by VS Code, or set an explicit "vsharp.path" setting to a valid v# executable.`
         );
         return;
     }
@@ -38,14 +38,14 @@ Please ensure it is available on the PATH used by VS Code, or set an explicit "v
     };
 
     const clientOptions: LanguageClientOptions = {
-        documentSelector: [{ scheme: "file", language: "V#" }],
+        documentSelector: [{ scheme: "file", language: "vsharp" }],
         synchronize: {
             fileEvents: vscode.workspace.createFileSystemWatcher("**/*.vs"),
         },
     };
 
     client = new LanguageClient(
-        "v-sharp-lsp",
+        "vsharp-lsp",
         "V# Language Server",
         serverOptions,
         clientOptions,
@@ -55,7 +55,7 @@ Please ensure it is available on the PATH used by VS Code, or set an explicit "v
     context.subscriptions.push(client);
 
     vscode.workspace.onDidChangeConfiguration((event) => {
-        if (event.affectsConfiguration("v-sharp.path")) {
+        if (event.affectsConfiguration("vsharp.path")) {
             vscode.window.showInformationMessage(
                 "V# settings changed. Reload VS Code to restart LSP."
             );
@@ -64,9 +64,9 @@ Please ensure it is available on the PATH used by VS Code, or set an explicit "v
 }
 
 async function getVSharpCommandPath(): Promise<string | undefined> {
-    const config = vscode.workspace.getConfiguration("v-sharp");
+    const config = vscode.workspace.getConfiguration("vsharp");
     const exePath = config.get<string>("path");
-    const command = exePath && exePath.trim().length > 0 ? exePath : "v-sharp";
+    const command = exePath && exePath.trim().length > 0 ? exePath : "vsharp";
     const workspaceFolders = vscode.workspace.workspaceFolders;
 
     if (!workspaceFolders || path.isAbsolute(command)) {

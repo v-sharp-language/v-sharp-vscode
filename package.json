@@ -1,5 +1,5 @@
 {
-  "name": "v-sharp",
+  "name": "vsharp",
   "displayName": "V#",
   "description": "Support for the V# programming language.",
   "version": "0.0.1",
@@ -9,7 +9,7 @@
     "url": "https://github.com/v-sharp-language/v-sharp-vscode"
   },
   "engines": {
-    "vscode": "^1.107.0"
+    "vscode": "^1.75.0"
   },
   "categories": [
     "Programming Languages",
@@ -20,38 +20,32 @@
   "contributes": {
     "languages": [
       {
-        "id": "v-sharp",
+        "id": "vsharp",
         "aliases": [
           "V#",
-          "v-sharp"
+          "vsharp"
         ],
         "extensions": [
           ".vs"
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "light": "./images/v-sharp-logo.png",
-          "dark": "./images/v-sharp-logo.png"
+          "light": "./images/vsharp-logo.png",
+          "dark": "./images/vsharp-logo.png"
         }
       }
     ],
     "grammars": [
       {
-        "language": "v-sharp",
+        "language": "vsharp",
         "scopeName": "source.vs",
-        "path": "./syntaxes/v-sharp.tmLanguage.json"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "v-sharp",
-        "path": "./snippets/v-sharp.snippets"
+        "path": "./syntaxes/vsharp.tmLanguage.json"
       }
     ],
     "configuration": {
-      "title": "V$# Configuration",
+      "title": "V# Configuration",
       "properties": {
-        "v-sharp.path": {
+        "vsharp.path": {
           "type": "string",
           "default": null,
           "description": "A path to the V# executable. the extension looks for V# in the PATH, but if set, will use the path specified instead.",
@@ -67,6 +61,8 @@
     "test-compile": "tsc -p ./",
     "vscode:package": "vsce package"
   },
+  "activationEvents": [],
+  "main": "./out/extension.js",
   "devDependencies": {
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
